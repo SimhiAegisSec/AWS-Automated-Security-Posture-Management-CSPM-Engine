@@ -24,12 +24,15 @@ It programmatically:
 
 ### 1. Installation
 Install the required AWS SDK for Python:
-Bash:
+
+**Bash:**
+
 pip install boto3
 
 ## Configure your machine with AWS IAM User credentials (ensuring least-privilege permissions for S3 and IAM):
 
-Bash: 
+**Bash:**
+
 aws configure
 
 Note: Provide your Access Key ID, Secret Access Key, and target region (e.g., ap-south-1).
@@ -37,18 +40,21 @@ Note: Provide your Access Key ID, Secret Access Key, and target region (e.g., ap
 ## 💻 Usage & Execution
 To run the compliance scanner and remediation engine:
 
-Bash
+**Bash**
+
 python cloud_security_engine.py
 
 ## 📊 Proof of Execution & Verification
 1. Terminal Scan & Debug Logs
 
 The script evaluates the infrastructure, surfaces threats in a clean JSON format, and triggers immediate repair:
+
 ![Terminal Scan & Debug Logs](/screenshots/secure_engine_debug_op.png)
 
 3. AWS Console Verification
 
 Below is the verification screenshot confirming that the engine successfully modified the insecure bucket's configuration to "Bucket and objects not public" via API automation:
+
 ![AWS Console Verification](/screenshots/automate_remediation_console_op.png)
 
 ## 🛡️ Key Lessons Learned
