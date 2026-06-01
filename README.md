@@ -42,10 +42,12 @@ python cloud_security_engine.py
 
 ## 📊 Proof of Execution & Verification
 1. Terminal Scan & Debug Logs
+
 The script evaluates the infrastructure, surfaces threats in a clean JSON format, and triggers immediate repair:
 ![Terminal Scan & Debug Logs](/screenshots/secure_engine_debug_op.png)
 
 3. AWS Console Verification
+
 Below is the verification screenshot confirming that the engine successfully modified the insecure bucket's configuration to "Bucket and objects not public" via API automation:
 ![AWS Console Verification](/screenshots/automate_remediation_console_op.png)
 
