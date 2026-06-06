@@ -3,7 +3,7 @@ import botocore
 import json
 import time
 # Initialize the AWS Boto3 client
-# GCP Equivalent: storage_client = storage.Client()
+
 s3_client = boto3.client('s3')
 iam_client = boto3.client('iam')
 # ---------------------------------------------------------
@@ -17,7 +17,7 @@ INSECURE_BUCKET_NAME = "my-intentionally-insecure-bucket-warrior-2026"
 def setup_compliance_environment():
     print("\n--- [STEP 1] Setting up Secure Compliance Infrastructure ---")
     
-    # 1. Create a Secure Bucket (Simulating GCP's private Bucket Lock)
+    # 1. Create a Secure Bucket 
     try:
         print(f"Creating Secure Audit Bucket: {BUCKET_NAME}...")
         s3_client.create_bucket(Bucket=BUCKET_NAME,
@@ -69,7 +69,7 @@ def run_security_scan():
             # If get_public_access_block throws an error, it means no configuration exists (it is public!)
             if e.response['Error']['Code'] == 'NoSuchPublicAccessBlockConfiguration':
                 findings.append({"resource": name, "type": "S3_Bucket", "issue": "Public Access Configuration Missing entirely", "severity": "CRITICAL"})
-# Check 2: Scan IAM User Root/Access Keys (Simulating GCP Service Account Key hygiene)
+# Check 2: Scan IAM User Root/Access Keys 
     print("Scanning Identity Layer (IAM) for stale credentials...")
     users = iam_client.list_users()['Users']
     for user in users:
@@ -97,7 +97,7 @@ def fix_security_vulnerabilities(findings):
             print(f"🚨 ALERT: Fix triggered for {bucket_to_fix} due to: {issue['issue']}")
             
             # Action: Programmatically shut down public exposure
-            # GCP Equivalent: storage_client.get_bucket(b).iam_configuration.public_access_prevention = "enforced"
+            
             s3_client.put_public_access_block(
                 Bucket=bucket_to_fix,
                 PublicAccessBlockConfiguration={
